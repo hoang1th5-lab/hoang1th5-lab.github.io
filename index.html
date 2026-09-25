@@ -1,9 +1,421 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Trang Web Của Tôi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BOMB SIGMA — The Ultimate Experience</title>
+  <meta name="description" content="BOMB SIGMA — powerful tools, clean design, maximum performance. A premium command center for creators.">
+  <meta name="theme-color" content="#080812">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BOMB SIGMA — The Ultimate Experience">
+  <meta property="og:description" content="Powerful tools. Clean design. Maximum performance.">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/jetbrains-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Marks the page as JS-enabled so scroll-reveal styles only apply when script.js can undo them. -->
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="script.js" defer></script>
 </head>
+
 <body>
-    <h1>Xin chào! Đây là trang web miễn phí đầu tiên của tôi trên GitHub.</h1>
+  <!-- ======================================================================
+       SVG SPRITE — gradients, logo mark and icons (referenced with <use>)
+       ====================================================================== -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-mark" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#c4b5fd"/>
+        <stop offset=".55" stop-color="#8b5cf6"/>
+        <stop offset="1" stop-color="#3b82f6"/>
+      </linearGradient>
+      <linearGradient id="g-sigma" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset="1" stop-color="#c4b5fd"/>
+      </linearGradient>
+      <linearGradient id="g-emblem" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#c4b5fd"/>
+        <stop offset=".5" stop-color="#8b5cf6"/>
+        <stop offset="1" stop-color="#3b82f6"/>
+      </linearGradient>
+      <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8b5cf6" stop-opacity=".35"/>
+        <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="spark-fill-blue" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3b82f6" stop-opacity=".35"/>
+        <stop offset="1" stop-color="#3b82f6" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <symbol id="logo-mark" viewBox="0 0 48 48">
+      <path d="M24 3.5 41.75 13.75v20.5L24 44.5 6.25 34.25v-20.5z" fill="rgba(139,92,246,.12)" stroke="url(#g-mark)" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M31 14.5H17.5L26 24l-8.5 9.5H31" fill="none" stroke="url(#g-sigma)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5 4.5 14H11l-1 7.5L19.5 10H13z"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 9.5h17M9.5 20.5v-11"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M6 4v5M6 13v7M12 4v9M12 17v3M18 4v3M18 11v9"/><circle cx="6" cy="11" r="2"/><circle cx="12" cy="15" r="2"/><circle cx="18" cy="9" r="2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17.5 14.2c2.4.2 4 1.9 4 4.8"/></symbol>
+    <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5v-1A2.5 2.5 0 0 0 13 5H7a2.5 2.5 0 0 0-2.5 2.5v6A2.5 2.5 0 0 0 7 16h1.5"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.5 7h15M9.5 7V4.5h5V7M6.5 7l.8 12a1.5 1.5 0 0 0 1.5 1.4h6.4a1.5 1.5 0 0 0 1.5-1.4l.8-12M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11.5M7 11.5l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8.5 7.5 4 12l4.5 4.5M15.5 7.5 20 12l-4.5 4.5M13.5 5.5l-3 13"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3.5 19.5 7.75v8.5L12 20.5l-7.5-4.25v-8.5z"/><path d="M4.5 7.75 12 12l7.5-4.25M12 12v8.5"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h9"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ======================================================================
+       AMBIENT BACKGROUND — glow, animated grid, floating squares, particles
+       ====================================================================== -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__glow"></div>
+    <div class="bg__grid"><div class="bg__grid-inner"></div></div>
+    <div class="bg__shapes">
+      <span class="shape" style="--x:5%;  --y:16%; --s:92px;  --r:14deg;  --d:30s; --del:-6s;  --blur:0px;  --o:.55; --dx:26px;  --dy:-38px"></span>
+      <span class="shape" style="--x:16%; --y:66%; --s:150px; --r:-10deg; --d:38s; --del:-14s; --blur:18px; --o:.5;  --dx:-30px; --dy:-46px"></span>
+      <span class="shape" style="--x:41%; --y:8%;  --s:56px;  --r:32deg;  --d:26s; --del:-3s;  --blur:1px;  --o:.5;  --dx:20px;  --dy:34px"></span>
+      <span class="shape" style="--x:63%; --y:78%; --s:110px; --r:22deg;  --d:34s; --del:-20s; --blur:10px; --o:.45; --dx:-24px; --dy:-32px"></span>
+      <span class="shape" style="--x:86%; --y:12%; --s:130px; --r:-18deg; --d:42s; --del:-9s;  --blur:16px; --o:.5;  --dx:-28px; --dy:40px"></span>
+      <span class="shape" style="--x:92%; --y:56%; --s:64px;  --r:40deg;  --d:28s; --del:-17s; --blur:0px;  --o:.5;  --dx:-18px; --dy:-36px"></span>
+      <span class="shape" style="--x:52%; --y:44%; --s:38px;  --r:8deg;   --d:24s; --del:-11s; --blur:0px;  --o:.4;  --dx:22px;  --dy:-28px"></span>
+      <span class="shape" style="--x:29%; --y:30%; --s:72px;  --r:-26deg; --d:36s; --del:-22s; --blur:6px;  --o:.4;  --dx:24px;  --dy:30px"></span>
+    </div>
+    <canvas id="particles"></canvas>
+    <div class="bg__noise"></div>
+    <div class="bg__vignette"></div>
+    <div class="cursor-glow"></div>
+  </div>
+
+  <!-- ======================================================================
+       NAVBAR
+       ====================================================================== -->
+  <header class="nav">
+    <div class="nav__progress" aria-hidden="true"></div>
+    <div class="nav__inner container">
+      <a class="brand" href="#home" aria-label="BOMB SIGMA — back to top">
+        <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#logo-mark" width="48" height="48"/></svg>
+        <span class="brand__name">BOMB <b>SIGMA</b></span>
+      </a>
+
+      <nav class="nav__links" id="nav-menu" aria-label="Primary">
+        <a href="#home" data-spy="home">HOME</a>
+        <a href="#features" data-spy="features">FEATURES</a>
+        <a href="#scripts" data-spy="scripts">SCRIPTS</a>
+        <a href="#status" data-spy="status">STATUS</a>
+        <!-- EDIT: replace the two links below with your own Discord invite and Telegram channel. -->
+        <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">DISCORD<svg class="ext" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-ur"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+        <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer">TELEGRAM<svg class="ext" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-ur"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn--primary nav__menu-cta" href="#download">DOWNLOAD</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--primary btn--sm nav__cta" href="#download">DOWNLOAD</a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ====================================================================
+         HERO
+         ==================================================================== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+
+        <div class="hero__copy">
+          <div class="hero__emblem" aria-hidden="true">
+            <svg class="emblem__ring" viewBox="0 0 600 600" focusable="false">
+              <circle cx="300" cy="300" r="292" fill="none" stroke="url(#g-emblem)" stroke-width="1.2" stroke-dasharray="2 10"/>
+              <circle cx="300" cy="300" r="262" fill="none" stroke="url(#g-emblem)" stroke-opacity=".45" stroke-width="1"/>
+            </svg>
+            <svg class="emblem__core" viewBox="0 0 600 600" focusable="false">
+              <path d="M300 78 492 189v222L300 522 108 411V189z" fill="rgba(139,92,246,.05)" stroke="url(#g-emblem)" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M300 128 449 214v172L300 472 151 386V214z" fill="none" stroke="url(#g-emblem)" stroke-opacity=".5" stroke-width="1" stroke-linejoin="round"/>
+              <path d="M382 200H228l88 100-88 100h154" fill="none" stroke="url(#g-emblem)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <p class="status-pill" data-hero style="--delay:.05s"><span class="dot dot--ok" aria-hidden="true"></span>SYSTEM ONLINE</p>
+
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__line hero__line--solid" data-hero style="--delay:.14s">BOMB</span>
+            <span class="hero__line hero__line--sheen" data-hero style="--delay:.28s">SIGMA</span>
+          </h1>
+
+          <p class="hero__tagline" data-hero style="--delay:.5s">THE ULTIMATE EXPERIENCE</p>
+          <p class="hero__desc" data-hero style="--delay:.6s">Powerful tools. Clean design. Maximum performance.</p>
+
+          <div class="hero__actions" data-hero style="--delay:.72s">
+            <a class="btn btn--primary btn--lg" href="#download" data-magnetic>GET STARTED</a>
+            <a class="btn btn--ghost btn--lg" href="#features" data-magnetic>EXPLORE FEATURES</a>
+          </div>
+        </div>
+
+        <div class="hero__visual" data-hero-visual>
+          <div class="orbit" aria-hidden="true"><i></i><i></i></div>
+          <div class="float">
+            <div class="tilt" data-tilt>
+              <div class="editor glass glow-border" role="group" aria-label="Demo code editor">
+                <div class="editor__inner">
+                  <div class="editor__bar">
+                    <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <div class="editor__tabs" role="tablist" aria-label="Demo files">
+                      <button class="tab" type="button" role="tab" id="tab-main" data-file="main" aria-selected="true" aria-controls="editor-panel">main.js</button>
+                      <button class="tab" type="button" role="tab" id="tab-config" data-file="config" aria-selected="false" aria-controls="editor-panel" tabindex="-1">config.js</button>
+                      <button class="tab" type="button" role="tab" id="tab-utils" data-file="utils" aria-selected="false" aria-controls="editor-panel" tabindex="-1">utils.js</button>
+                    </div>
+                  </div>
+
+                  <div class="editor__body" id="editor-panel" role="tabpanel" aria-labelledby="tab-main">
+                    <div class="editor__gutter" aria-hidden="true">1</div>
+                    <pre class="editor__code" tabindex="0" aria-label="Demo JavaScript, harmless example code"><code id="code-target"></code></pre>
+                  </div>
+
+                  <div class="editor__console">
+                    <div class="console__head" aria-hidden="true"><span class="console__dot"></span>OUTPUT</div>
+                    <div class="console__lines" id="console-lines" role="log" aria-live="polite" aria-label="Demo output"></div>
+                  </div>
+
+                  <div class="editor__actions">
+                    <button class="chip chip--run" type="button" id="btn-run"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-play"/></svg><span>RUN</span></button>
+                    <button class="chip" type="button" id="btn-clear"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-trash"/></svg><span>CLEAR</span></button>
+                    <button class="chip" type="button" id="btn-copy"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg><span class="chip__label">COPY</span></button>
+                    <span class="editor__meta" aria-hidden="true">JavaScript &middot; UTF-8</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="sr-only" id="editor-status" role="status"></p>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#features" aria-label="Scroll to features"><span aria-hidden="true"></span></a>
+    </section>
+
+    <!-- ====================================================================
+         FEATURES
+         ==================================================================== -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <h2 class="section__title" id="features-title">BUILT <span class="gradient-text">DIFFERENT.</span></h2>
+          <p class="section__lead">Every detail is tuned for speed, clarity and control, so the tool disappears and your work stays in focus.</p>
+        </header>
+
+        <ul class="cards" role="list">
+          <li data-reveal style="--delay:.0s">
+            <article class="card glass" data-spotlight>
+              <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#i-bolt"/></svg></span>
+              <h3 class="card__title">PERFORMANCE</h3>
+              <p class="card__text">Fast, lightweight and optimized for modern devices.</p>
+            </article>
+          </li>
+          <li data-reveal style="--delay:.08s">
+            <article class="card glass" data-spotlight>
+              <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#i-layout"/></svg></span>
+              <h3 class="card__title">CONTROL</h3>
+              <p class="card__text">Everything organized in one clean interface.</p>
+            </article>
+          </li>
+          <li data-reveal style="--delay:.16s">
+            <article class="card glass" data-spotlight>
+              <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#i-sliders"/></svg></span>
+              <h3 class="card__title">CUSTOMIZATION</h3>
+              <p class="card__text">Flexible tools designed around your workflow.</p>
+            </article>
+          </li>
+          <li data-reveal style="--delay:.24s">
+            <article class="card glass" data-spotlight>
+              <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#i-users"/></svg></span>
+              <h3 class="card__title">COMMUNITY</h3>
+              <p class="card__text">Connect, share and build with the community.</p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SHOWCASE — demo dashboard (all data is fictional)
+         ==================================================================== -->
+    <section class="section" id="scripts" aria-labelledby="showcase-title">
+      <div class="container">
+        <header class="section__head section__head--center" data-reveal>
+          <h2 class="section__title" id="showcase-title">ONE PLACE. <span class="gradient-text">TOTAL CONTROL.</span></h2>
+          <p class="section__lead">Scripts, modules, logs and live performance in a single window. Everything below is fictional demo data.</p>
+        </header>
+
+        <div class="dash frame glass" data-reveal role="group" aria-label="Demo dashboard with fictional data">
+          <div class="dash__inner">
+
+            <aside class="dash__side" aria-label="Demo sidebar">
+              <div class="dash__brand">
+                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#logo-mark" width="48" height="48"/></svg>
+                <span>SIGMA</span>
+              </div>
+              <div class="side-nav" role="group" aria-label="Demo views">
+                <button class="side-btn" type="button" data-view="overview" aria-current="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-grid"/></svg>Overview</button>
+                <button class="side-btn" type="button" data-view="scripts"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>Scripts</button>
+                <button class="side-btn" type="button" data-view="modules"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cube"/></svg>Modules</button>
+                <button class="side-btn" type="button" data-view="logs"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Logs</button>
+                <button class="side-btn" type="button" data-view="settings"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sliders"/></svg>Settings</button>
+              </div>
+              <div class="side-foot">
+                <div class="side-foot__row"><span>Storage</span><b>62%</b></div>
+                <div class="bar bar--thin"><div class="bar__fill" style="--p:.62"></div></div>
+                <p class="side-foot__ver">v1.0.0 stable</p>
+              </div>
+            </aside>
+
+            <div class="dash__main">
+              <div class="dash__top">
+                <p class="crumbs">bomb-sigma <span>/</span> workspace <span>/</span> <b id="crumb">overview</b></p>
+                <span class="live"><i class="dot dot--ok" aria-hidden="true"></i>LIVE</span>
+              </div>
+
+              <div class="stats">
+                <div class="stat" data-stat="fps">
+                  <p class="stat__label">FRAME RATE</p>
+                  <p class="stat__value"><span class="stat__num" data-num>60</span><span class="stat__unit">FPS</span></p>
+                  <p class="stat__delta" data-delta>+0.0%</p>
+                  <svg class="spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="spark__area" d=""/><path class="spark__line" d=""/></svg>
+                </div>
+                <div class="stat stat--blue" data-stat="lat">
+                  <p class="stat__label">LATENCY</p>
+                  <p class="stat__value"><span class="stat__num" data-num>12</span><span class="stat__unit">ms</span></p>
+                  <p class="stat__delta" data-delta>+0.0%</p>
+                  <svg class="spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="spark__area" d=""/><path class="spark__line" d=""/></svg>
+                </div>
+                <div class="stat" data-stat="cpu">
+                  <p class="stat__label">CPU LOAD</p>
+                  <p class="stat__value"><span class="stat__num" data-num>24</span><span class="stat__unit">%</span></p>
+                  <p class="stat__delta" data-delta>+0.0%</p>
+                  <svg class="spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="spark__area" d=""/><path class="spark__line" d=""/></svg>
+                </div>
+                <div class="stat stat--blue" data-stat="mem">
+                  <p class="stat__label">MEMORY</p>
+                  <p class="stat__value"><span class="stat__num" data-num>248</span><span class="stat__unit">MB</span></p>
+                  <p class="stat__delta" data-delta>+0.0%</p>
+                  <svg class="spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="spark__area" d=""/><path class="spark__line" d=""/></svg>
+                </div>
+              </div>
+
+              <div class="dash__row">
+                <section class="panel" aria-labelledby="p-term">
+                  <header class="panel__head"><h3 class="panel__title" id="p-term">TERMINAL</h3><span class="panel__sub">sigma@workspace</span></header>
+                  <div class="term" id="term" role="log" aria-label="Demo terminal output"></div>
+                  <noscript><p class="panel__sub">Enable JavaScript to see the live terminal demo.</p></noscript>
+                </section>
+
+                <section class="panel" aria-labelledby="p-feed">
+                  <header class="panel__head"><h3 class="panel__title" id="p-feed">ACTIVITY</h3><span class="panel__sub">demo feed</span></header>
+                  <ul class="feed" id="feed" role="list" aria-live="off"></ul>
+                  <noscript><p class="panel__sub">Enable JavaScript to see the live activity demo.</p></noscript>
+                </section>
+              </div>
+
+              <div class="dash__row">
+                <section class="panel" id="status" aria-labelledby="p-status">
+                  <header class="panel__head">
+                    <h3 class="panel__title" id="p-status">STATUS</h3>
+                    <span class="pill"><i class="dot dot--ok" aria-hidden="true"></i>All systems operational</span>
+                  </header>
+                  <ul class="services" role="list">
+                    <li><i class="dot dot--ok" aria-hidden="true"></i><span class="svc__name">Core engine</span><span class="svc__meta">99.99%</span><span class="svc__state">Operational</span></li>
+                    <li><i class="dot dot--ok" aria-hidden="true"></i><span class="svc__name">Sync network</span><span class="svc__meta">99.97%</span><span class="svc__state">Operational</span></li>
+                    <li><i class="dot dot--ok" aria-hidden="true"></i><span class="svc__name">Community bridge</span><span class="svc__meta">99.92%</span><span class="svc__state">Operational</span></li>
+                    <li><i class="dot dot--ok" aria-hidden="true"></i><span class="svc__name">Update channel</span><span class="svc__meta">99.90%</span><span class="svc__state">Operational</span></li>
+                  </ul>
+                  <div class="uptime" id="uptime" aria-hidden="true"></div>
+                  <p class="uptime__legend" aria-hidden="true"><span>40 days ago</span><span>Today</span></p>
+                </section>
+
+                <section class="panel" aria-labelledby="p-perf">
+                  <header class="panel__head"><h3 class="panel__title" id="p-perf">PERFORMANCE</h3><span class="panel__sub">demo metrics</span></header>
+                  <div class="bars">
+                    <div class="bar-item">
+                      <div class="bar__row"><span>Build pipeline</span><b data-count="82">82%</b></div>
+                      <div class="bar"><div class="bar__fill" style="--p:.82"></div></div>
+                    </div>
+                    <div class="bar-item">
+                      <div class="bar__row"><span>Asset sync</span><b data-count="64">64%</b></div>
+                      <div class="bar"><div class="bar__fill" style="--p:.64; --delay:.12s"></div></div>
+                    </div>
+                    <div class="bar-item">
+                      <div class="bar__row"><span>Index optimization</span><b data-count="91">91%</b></div>
+                      <div class="bar"><div class="bar__fill" style="--p:.91; --delay:.24s"></div></div>
+                    </div>
+                    <div class="bar-item">
+                      <div class="bar__row"><span>Cache warm-up</span><b data-count="47">47%</b></div>
+                      <div class="bar"><div class="bar__fill" style="--p:.47; --delay:.36s"></div></div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         DOWNLOAD
+         ==================================================================== -->
+    <section class="section section--cta" id="download" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta glass glow-border" data-reveal>
+          <div class="cta__bg" aria-hidden="true"><i></i><i></i><i></i></div>
+          <svg class="cta__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#logo-mark" width="48" height="48"/></svg>
+          <h2 class="cta__title" id="cta-title">READY TO ENTER THE <span class="gradient-text">SIGMA?</span></h2>
+          <p class="cta__text">Download Bomb Sigma and explore the experience.</p>
+          <div class="cta__actions">
+            <!-- EDIT: point DOWNLOAD at your release asset or download page. -->
+            <a class="btn btn--primary btn--lg" href="https://github.com/hoang1th5-lab/hoang1th5-lab.github.io/releases" target="_blank" rel="noopener noreferrer" data-magnetic>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>DOWNLOAD<span class="sr-only"> (opens in a new tab)</span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="https://github.com/hoang1th5-lab/hoang1th5-lab.github.io" target="_blank" rel="noopener noreferrer" data-magnetic>
+              VIEW ON GITHUB<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-ur"/></svg><span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </div>
+          <p class="cta__note">Open-source &bull; Community driven &bull; Built for creators</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="brand" href="#home" aria-label="BOMB SIGMA — back to top">
+        <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#logo-mark" width="48" height="48"/></svg>
+        <span class="brand__name">BOMB <b>SIGMA</b></span>
+      </a>
+      <nav aria-label="Footer">
+        <ul class="footer__links" role="list">
+          <li><a href="https://github.com/hoang1th5-lab/hoang1th5-lab.github.io" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://telegram.org/" target="_blank" rel="noopener noreferrer">Telegram<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="#status">Status</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">&copy; 2026 Bomb Sigma. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
